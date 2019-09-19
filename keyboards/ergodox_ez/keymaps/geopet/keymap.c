@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
  * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L1|  '"  | =/+  | Left | Right|                                       |  Up  | Down |   [  |   ]  | BSPC |
+ *   |Grv/L2|  '"  | =/+  | Left | Right|                                       |  Up  | Down |   [  |   ]  | BSPC |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | LALT |ESCCTL|       | Alt  |Ctrl/Esc|
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,            KC_Q,        KC_W,     KC_E,    KC_R,    KC_T,    TG(SYMB),
   LCTL_T(KC_ESCAPE), KC_A,        KC_S,     KC_D,    KC_F,    KC_G,
   KC_LSFT,           CTL_T(KC_Z), KC_X,     KC_C,    KC_V,    KC_B,    ALL_T(KC_NO),
-  LT(SYMB,KC_GRV),   KC_QUOT,     KC_EQUAL, KC_LEFT, KC_RGHT,
+  LT(MDIA, KC_GRV),  KC_QUOT,     KC_EQUAL, KC_LEFT, KC_RGHT,
                                                            KC_LALT, LCTL_T(KC_ESCAPE),
                                                                           KC_HOME,
                                                          KC_LGUI, KC_BSPC, KC_END,
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      | MsUp |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      |      |      |      |      |  Play  |
+ * |        |      |MsLeft|MsDown|MsRght|      |------|           |------| Left | Down |  Up  | Right|      |  Play  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      | Prev | Next |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
+           KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_MPLY,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
                     KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS,
@@ -170,15 +170,15 @@ void matrix_init_user(void) {
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [2] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {14,255,255}, {14,255,255}, {0,0,0},
-            {154,255,255}, {154,255,255}, {154,255,255}, {0,0,0},
+            {85,203,158}, {85,203,158}, {85,203,158}, {85,203,158}, {0,0,0},
+            {0,0,0}, {0,0,0}, {134,255,213}, {134,255,213}, {0,0,0},
+            {10,255,255}, {10,255,255}, {10,255,255}, {0,0,0},
 
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {105,255,255}, {0,0,0}, {0,0,0},
-            {0,0,0}, {105,255,255}, {105,255,255}, {105,255,255}, {0,0,0},
+            {0,0,0}, {0,0,0}, {134,255,213}, {0,0,0}, {0,0,0},
+            {0,0,0}, {134,255,213}, {134,255,213}, {134,255,213}, {0,0,0},
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {249,228,255}, {249,228,255}, {0,0,0}, {0,0,0} },
+            {243,222,234}, {243,222,234}, {0,0,0}, {0,0,0} },
 };
 
 void set_layer_color(int layer) {
