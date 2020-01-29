@@ -16,8 +16,16 @@ enum custom_keycodes {
   VRSN,
   RGB_SLD,
   TABE,
-  TMUXTAB
+  TMUXTAB,
+  BABY_E,
+  CRY_E,
+  DANCER_E,
+  HEART_E,
+  JOY_E,
+  ONEHUN_E,
+  ROFL_E
 };
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -188,13 +196,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 4 Emoji keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |  💯  |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |  L0  |           |  L0  |      |      |      |      |      |        |
+ * |        |      |      |      |  🤣  |      |  L0  |           |  L0  |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+ * |        |      |      |  💃  |      |      |------|           |------|  <3  |  😂  |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      |  😢  |      |  👶  |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -208,18 +216,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [EMOJI] = LAYOUT_ergodox(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(0),
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, ONEHUN_E, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,  ROFL_E,  KC_TRNS, TO(0),
+  KC_TRNS, KC_TRNS,  KC_TRNS, DANCER_E, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS,  KC_TRNS, CRY_E,    KC_TRNS, BABY_E,  KC_TRNS,
+  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,
                                                KC_TRNS, KC_TRNS,
                                                         KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,
   // right hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  TO(0), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  TO(0),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+           HEART_E, JOY_E,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS,
@@ -242,6 +250,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       case TMUXTAB:
          SEND_STRING (SS_LCTRL("a") "c");
+         return false;
+      case BABY_E:
+         SEND_STRING(":baby:");
+         return false;
+      case CRY_E:
+         SEND_STRING(":cry:");
+         return false;
+      case DANCER_E:
+         SEND_STRING(":dancer:");
+         return false;
+      case HEART_E:
+         SEND_STRING(":red heart:");
+         return false;
+      case JOY_E:
+         SEND_STRING(":joy:");
+         return false;
+      case ONEHUN_E:
+         SEND_STRING(":100:");
+         return false;
+      case ROFL_E:
+         SEND_STRING(":rofl:");
          return false;
       #ifdef RGBLIGHT_ENABLE
       case RGB_SLD:
@@ -284,11 +313,11 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
             {0,0,0}, {0,0,0}, {85,203,158}, {0,0,0}, {0,0,0},
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
-    [4] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-            {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
+    [4] = { {14,222,242}, {14,222,242}, {14,222,242}, {14,222,242}, {14,222,242},
+            {255,220,201}, {255,220,201}, {255,220,201}, {255,220,201}, {255,220,201},
+            {233,218,217}, {233,218,217}, {233,218,217}, {233,218,217}, {233,218,217},
+            {205,255,255}, {205,255,255}, {205,255,255}, {205,255,255}, {205,255,255},
+            {180,255,233}, {180,255,233}, {180,255,233}, {180,255,233},
 
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
             {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
